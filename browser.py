@@ -28,7 +28,7 @@ class URL:
             proto=socket.IPPROTO_TCP,
         )
         s.connect ((self.host, self.port))
-        
+
         if self.scheme == "https":
             ctx = ssl.create_default_context()
             s = ctx.wrap_socket(s, server_hostname=self.host)
@@ -87,4 +87,5 @@ class Browser:
 
 if __name__ == "__main__":
     import sys
-    load(URL(sys.argv[1]))
+    Browser().load(URL(sys.argv[1]))
+    tkinter.mainloop()
