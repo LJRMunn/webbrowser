@@ -1,5 +1,6 @@
 import socket
 import ssl
+import tkinter
 
 class URL:
     def __init__(self, url):
@@ -64,6 +65,22 @@ def load(url):
     body = url.request()
     show(body)
 
+class Browser:
+    def __init__(self):
+        self.window = tkinter.Tk()
+        self.canvas = tkinter.Canvas(
+            self.window,
+            width=800,
+            height=600,
+        )
+        self.canvas.pack()
+
+    def load(self):
+        self.canvas.create_rectangle(10, 20, 400, 300)
+        self.canvas.create_oval(100, 100, 150, 150)
+        self.canvas.create_text(200, 150, text="Hello, World!")
+
 if __name__ == "__main__":
     import sys
-    load(URL(sys.argv[1]))
+    Browser().load()
+    tkinter.mainloop()
